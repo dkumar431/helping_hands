@@ -1,0 +1,114 @@
+<div class="container">
+
+<div class="page-header">
+    <h1>My Dashboard </h1>
+</div>
+
+<!-- Metro Tiles - START -->
+
+<div class="container dynamicTile">
+    <div class="row">
+
+        <%= render "shared/recent_patients" %>
+
+        <div class="col-sm-2 col-xs-4">
+          <div id="tile8" class="tile">
+              <div class="carousel slide" data-ride="carousel">
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                      <div class="item active text-center">
+                          <div>
+                              <span class="fa fa-spinner bigicon"></span>
+                          </div>
+                          <div class="icontext">
+                              <%= link_to "My Profile",my_profile_member_path(current_user)  %>
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+        <div class="col-sm-2 col-xs-4">
+            <div id="tile9" class="tile">
+                <div class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active text-center">
+                            <div>
+                                <span class="fa fa-book bigicon"></span>
+                            </div>
+                            <div class="icontext">
+                                <%= link_to "My Patients", my_patients_member_path(current_user) %>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+            <div id="tile10" class="tile">
+                <div class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active text-center">
+                            <div>
+                                <span class="fa fa-phone bigicon"></span>
+                            </div>
+                            <div class="icontext">
+                                <%= link_to "My Colleagues", my_colleagues_member_path(current_user) %>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-8">
+            <div id="tile8" class="tile">
+                <div class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active text-center">
+                            <div>
+                                <span class="fa fa-phone bigicon"></span>
+                            </div>
+                            <div class="icontext">
+                                <%= link_to "All Agents",all_agents_member_path(current_user) %>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-8">
+            <div id="tile8" class="tile">
+                <div class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active text-center">
+                            <div>
+                                <span class="fa fa-phone bigicon"></span>
+                            </div>
+                            <div class="icontext">
+                                <%= link_to "Register New Agent",add_agent_member_path(current_user) %>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

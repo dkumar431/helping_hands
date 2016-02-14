@@ -1,0 +1,35 @@
+<h1>My Profile</h1>
+
+<div class="profile_container">
+
+
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+
+        <div class="panel-heading">
+           <div class="row">
+            <% flash.each do |key,value|%>
+              <div><%= value %></div>
+            <% end %>
+
+           </div>
+
+          <hr>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+           <div class="alert alert-danger" id="errordiv" style="display:none;">
+
+           </div>
+
+            <div class="col-lg-12">
+            <%= render 'agent_profile' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

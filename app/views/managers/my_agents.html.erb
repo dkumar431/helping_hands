@@ -1,0 +1,11 @@
+<div class="status_radio">
+  <%= form_tag "/mangers_controller/filter_agent" do %>
+    <%= hidden_field_tag(:manager_id,current_user.id) %>
+    Status:&nbsp;<%= radio_button("post", "status", "A") %>Active
+    <%= radio_button("post", "status", "I") %>Inactive
+  <% end %>
+</div>
+
+<div id="agents">
+  <%=  render 'agent_list' %>
+</div>

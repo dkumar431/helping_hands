@@ -1,0 +1,36 @@
+<div class="container">
+
+<div class="page-header">
+    <h1>My Dashboard </h1>
+</div>
+
+<!-- Metro Tiles - START -->
+
+<div class="container dynamicTile">
+    <div class="row">
+
+        <%#= render "shared/recent_patients" %>
+
+        <div class="col-sm-2 col-xs-4">
+          <div id="tile8" class="tile">
+              <div class="carousel slide" data-ride="carousel">
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                      <div class="item active text-center">
+                          <div>
+                              <span class="fa fa-spinner bigicon"></span>
+                          </div>
+                          <div class="icontext">
+                              <%= link_to "My Agents",my_agents_manager_path(current_user)  %>
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+    </div>
+</div>

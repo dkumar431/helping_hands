@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  location.href = "<%= members_path %>"
+<% else %>
+
+  <% resource.errors.messages.each do |key,value| %>
+
+    $("span#<%= key.to_s%>").html("<%= value.first %>");
+  <% end %>
+
+<% end %>

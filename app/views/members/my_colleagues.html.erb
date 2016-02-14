@@ -1,0 +1,32 @@
+<table class="tree table table-striped table-bordered" id="colleague_table">
+
+  <thead>
+    <tr>
+      <th>Agent Name > Patient Name</th>
+      <th>Phone</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @patients_by_agent.each do |agent_id,patients|%>
+  <tr class="treegrid-<%=agent_id%>" >
+
+    <td colspan="3"><b><%= @colleague_names[agent_id] %></b></td>
+
+    <% patients.each_with_index do |patient,index| %>
+
+      <tr class="treegrid-<%=patient.id%> treegrid-parent-<%=agent_id%>">
+        <td><%= patient.name %></td>
+        <td><%= patient.phone %></td>
+        <td><%= patient.status  %></td>
+      </tr>
+
+    <% end %>
+
+  </tr>
+
+  <%end%>
+  </tbody>
+
+
+</table>

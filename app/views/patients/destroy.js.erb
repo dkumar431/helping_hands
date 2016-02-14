@@ -1,0 +1,6 @@
+
+$('.delete_patient').bind('ajax:success',function(){
+  alert("Patient deleted.");
+    $(this).closest('tr').fadeOut();
+
+});

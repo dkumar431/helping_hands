@@ -1,0 +1,60 @@
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <% if @patient.persisted? %>
+          <h4 class="modal-title">Edit Patient</h4>
+        <%else%>
+          <h4 class="modal-title">Add New Patient</h4>
+        <% end %>
+
+      </div>
+
+      <div class="modal-body a-unique-class">
+        <%= form_for(@patient, :html => {:class => "form-horizontal"}) do |p| %>
+          <div class="form-group">
+            <%= p.label  :PatientName, class: 'col-xs-3 control-label' %>
+            <div class="col-xs-4"><%= p.text_field  :name%></div>
+            <div class="col-xs-5 messageContainer"></div>
+          </div>
+
+          <div class="form-group">
+            <%= p.label :Phone,class: 'col-xs-3 control-label' %>
+            <div class="col-xs-4"><%= p.text_field  :phone%></div>
+            <div class="col-xs-5 messageContainer"></div>
+          </div>
+
+          <div class="form-group">
+            <%= p.label "Address",class: 'col-xs-3 control-label'  %><br />
+            <div class="col-xs-4"><%= p.text_area  :address%></div>
+            <div class="col-xs-5 messageContainer"></div>
+          </div>
+
+          <div class="form-group">
+            <%= p.label "Disease",class: 'col-xs-3 control-label' %><br />
+            <div class="col-xs-4"><%= p.text_area  :disease_description %></div>
+            <div class="col-xs-5 messageContainer"></div>
+          </div>
+
+           <div class="modal-footer">
+            <% if @patient.persisted? %>
+              <%= p.submit "Update", class: 'btn btn-success', id: 'addPatient'%>
+            <% else %>
+              <%= p.submit "Add", class: 'btn btn-success', id: 'addPatient'%>
+            <% end %>
+            <%= p.button "Close", class: 'btn btn-default', 'data-dismiss' => 'modal'%>
+          </div>
+
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>

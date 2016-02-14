@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  location.href = "<%= dashboards_path %>"
+<% else %>
+  $("#errordiv").show();
+  $("#errordiv").html("<%= @error_message %>");
+<% end %>

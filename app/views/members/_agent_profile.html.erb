@@ -1,0 +1,61 @@
+<% if @user.persisted? %>
+  <% path = update_agent_member_path %>
+<%else%>
+  <% path = create_agent_member_path %>
+<%end%>
+<%= form_for(@user, :url => path,:html => { :id=>"register-form", :role=>"form"}) do |f| %>
+
+  <%#= render 'shared/error_messages', :object => f.object %>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, :id=>"name", :tabindex=>"1", :class=>"form-control", :placeholder=>"Name" %>
+    <p class='error'><%= show_errors(@user, :name) %></p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, :id=>"username", :tabindex=>"2", :class=>"form-control", :placeholder=>"Username" %>
+    <p class='error'><%= show_errors(@user, :email) %></p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+
+    <%= f.password_field :password, autocomplete: "off",:id=>"password", :tabindex=>"3", :class=>"form-control", :placeholder=>"Password" %>
+    <p class='error'><%= show_errors(@user, :password) %></p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off",:id=>"confirm-password", :tabindex=>"4", :class=>"form-control", :placeholder=>"Confirm Password" %>
+    <p class='error'><%= show_errors(@user, :password_confirmation) %></p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, autofocus: true, :id=>"address", :tabindex=>"5", :class=>"form-control", :placeholder=>"" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, autofocus: true, :id=>"phone", :tabindex=>"6", :class=>"form-control", :placeholder=>"Phone" %>
+    <p class='error'><%= show_errors(@user, :phone) %></p>
+  </div>
+
+
+  <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <% if @user.persisted? %>
+            <%= f.submit "Update",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register", remote: true %>
+          <% else %>
+            <%= f.submit "Register",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register", remote: true %>
+          <% end %>
+
+        </div>
+      </div>
+  </div>
+<% end %>
