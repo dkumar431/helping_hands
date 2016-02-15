@@ -1,1 +1,5 @@
+config/databse.yml
+log/development.log
+tmp/*
+Gemfile.lock
 
