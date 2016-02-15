@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class AgentsController < ApplicationController
   before_filter :logged_in, :only => [:index]
 
   def index
@@ -43,11 +43,9 @@ class MembersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(agent_params)
       flash[:success] = "Profile Updated."
-      redirect_to  my_profile_member_path
+      redirect_to  my_profile_agent_path
     else
-      #binding.pry
       @title = "Edit User"
-      #redirect_to  my_profile_member_path
       render 'my_profile'
     end
   end
@@ -58,23 +56,18 @@ class MembersController < ApplicationController
 
   def create_agent
 
-    parent_agent = User.where(:id => params[:id]).first
-    child_agent = User.new(agent_params)
+    manager = User.where(:id => params[:id]).first.manager
+    new_agent = User.new(agent_params)
+    #new_agent[:status] = :I
+    binding.pry
 
-
-    child_agent.status = :I
-    manager = parent_agent.manager
-    manager_name = manager.name
-
-    if child_agent.valid?
-      c_agent = child_agent.save
-      relationship = Relationship.new(agent_id: child_agent.id,manager_id:current_user.manager.id)
-      relationship.save
-      ExampleMailer.sample_email(manager,child_agent).deliver
-      flash[:success] = "Agent added successfully , approval request sent to #{manager_name}"
-      redirect_to add_agent_member_path
+    if new_agent.valid?
+      manager.agents << new_agent
+      ExampleMailer.sample_email(manager,new_agent).deliver
+      flash[:success] = "Agent added successfully , approval request sent to #{manager.name}"
+      redirect_to add_agent_agent_path
     else
-      @user = child_agent
+      @user = new_agent
       render 'add_agent'
     end
 
@@ -89,7 +82,9 @@ class MembersController < ApplicationController
   end
 
   def agent_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,:phone,:address)
+    p = params.require(:user).permit(:name, :email, :password, :password_confirmation,:phone,:address)
+    p[:status] = :I
+    p
   end
 
 end

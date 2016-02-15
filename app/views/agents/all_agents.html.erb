@@ -9,7 +9,7 @@
   <tbody>
   <%@agents.each do |agent|%>
     <tr>
-      <td><%= link_to "#{agent.name}", patients_by_agent_member_path(agent) ,:remote => true %>  </td>
+      <td><%= link_to "#{agent.name}", patients_by_agent_agent_path(agent) ,:remote => true %>  </td>
     </tr>
   <%end%>
   </tbody>

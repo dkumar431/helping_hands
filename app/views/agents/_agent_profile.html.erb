@@ -1,7 +1,7 @@
 <% if @user.persisted? %>
-  <% path = update_agent_member_path %>
+  <% path = update_agent_agent_path %>
 <%else%>
-  <% path = create_agent_member_path %>
+  <% path = create_agent_agent_path %>
 <%end%>
 <%= form_for(@user, :url => path,:html => { :id=>"register-form", :role=>"form"}) do |f| %>
 

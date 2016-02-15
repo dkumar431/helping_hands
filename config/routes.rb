@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :members do
+  resources :agents do
     member do
       get 'my_patients'
       get 'my_colleagues'

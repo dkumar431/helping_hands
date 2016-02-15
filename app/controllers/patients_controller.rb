@@ -9,12 +9,10 @@ class PatientsController < ApplicationController
   end
 
   def create
-    #binding.pry
     patient = Patient.new(patient_params)
     patient.disease = Disease.new(description: disease_params[:disease_description])
 
     if patient.valid?
-      #patient.
       current_user.patients << patient
       redirect_to my_patient_path
     end
@@ -24,7 +22,6 @@ class PatientsController < ApplicationController
     patient = Patient.where(id: params[:id]).first
     if patient
       patient.destroy
-      #redirect_to my_patient_path
     end
   end
 
@@ -47,7 +44,7 @@ class PatientsController < ApplicationController
   private
 
   def my_patient_path
-    my_patients_member_path(current_user)
+    my_patients_agent_path(current_user)
   end
   def patient_params
     params.require(:patient).permit(:name, :phone, :address)
