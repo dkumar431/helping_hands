@@ -1,4 +1,4 @@
-config/databse.yml
+config/database.yml
 log/development.log
 tmp/*
 Gemfile.lock
