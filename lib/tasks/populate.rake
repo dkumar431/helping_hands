@@ -35,7 +35,7 @@ namespace :populate do
     password = 'd.k.padhy'
     status = 'I'
     role = 2
-    user = User.new(name: name,address: address,phone: phone,email: email, status: status, role_id: role)
+    user = User.new(name: name, address: address, phone: phone, email: email, status: status, role_id: role, password: password, password_confirmation: password)
     user.save!
   end
 
