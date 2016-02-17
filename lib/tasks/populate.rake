@@ -1,8 +1,8 @@
 require 'faker'
 
 namespace :populate do
-  desc "Generate test patients"
 
+  desc "Generate test patients"
   task patient_diseases: :environment do
     user_ids = User.all.pluck(:id)
     Patient.destroy_all
