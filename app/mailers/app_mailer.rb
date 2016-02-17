@@ -1,7 +1,7 @@
-class ExampleMailer < ApplicationMailer
+class AppMailer < ApplicationMailer
   default from: "dkumar431@gmail.com"
 
-  def sample_email(manager,agent)
+  def agent_added_notification_mail(manager,agent)
     mail(to: manager.email, subject: 'Agent Request - Pending Approval')
   end
 

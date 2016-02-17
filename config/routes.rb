@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  resources :dashboards, only: :index
+
   resources :agents do
     member do
       get 'my_patients'
@@ -20,21 +22,22 @@ Rails.application.routes.draw do
 
     end
     collection do
-
-
     end
   end
-  resources :dashboards, only: :index
-  resources :patients
+
   resources :managers do
     member do
-      get 'my_agents'
+      post 'approve_reject_agent'
 
     end
     collection do
+      get 'my_agents'
       post 'filter_agent'
     end
   end
+
+  resources :patients
+
   # get 'pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.

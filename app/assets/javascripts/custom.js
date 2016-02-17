@@ -46,13 +46,13 @@ $(document).ready(function () {
         }
       });
 
-    $('input:radio[name="post[status]"]').click(function(event){
-      var status = $('input:radio[name="post[status]"]:checked').val();
+    $('input:radio[name="post[agent_status]"]').click(function(event){
+      var status = $('input:radio[name="post[agent_status]"]:checked').val();
       var manager_id = $('#manager_id').val();
       $.ajax({
          url: 'http://localhost:3000/managers/filter_agent',
          data: {
-            status : status,
+            agent_status : status,
             manager_id : manager_id
          },
          error: function() {

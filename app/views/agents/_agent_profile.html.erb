@@ -1,8 +1,4 @@
-<% if @user.persisted? %>
-  <% path = update_agent_agent_path %>
-<%else%>
-  <% path = create_agent_agent_path %>
-<%end%>
+<% path = @user.persisted? ? update_agent_agent_path : create_agent_agent_path %>
 <%= form_for(@user, :url => path,:html => { :id=>"register-form", :role=>"form"}) do |f| %>
 
   <%#= render 'shared/error_messages', :object => f.object %>

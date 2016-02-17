@@ -101,93 +101,93 @@
 }
 
 .dynamicTile .col-sm-2.col-xs-4 {
-        padding: 5px;
-    }
+  padding: 5px;
+}
 
-    .bigicon {
-        font-size: 67px;
-        color: white;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
+.bigicon {
+  font-size: 67px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
-    .icontext {
-        color: white;
-        font-size: 27px;
-    }
+.icontext {
+  color: white;
+  font-size: 27px;
+}
 
-    .bigicondark {
-        font-size: 67px;
-        color: black;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
+.bigicondark {
+  font-size: 67px;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
-    .icontextdark {
-        color: black;
-        font-size: 27px;
-    }
+.icontextdark {
+  color: black;
+  font-size: 27px;
+}
 
-    .dynamicTile .col-sm-4.col-xs-8 {
-        padding: 5px;
-    }
+.dynamicTile .col-sm-4.col-xs-8 {
+  padding: 5px;
+}
 
-    #tile1 {
-        background: #7C91C7;
-    }
+#tile1 {
+  background: #7C91C7;
+}
 
-    #tile2 {
-        background: #3B579D;
-    }
+#tile2 {
+  background: #3B579D;
+}
 
-    #tile3 {
-        background: #153178;
-    }
+#tile3 {
+  background: #153178;
+}
 
-    #tile4 {
-        background: #EACF46;
-    }
+#tile4 {
+  background: #EACF46;
+}
 
-    #tile5 {
-        background: #EACF46;
-    }
+#tile5 {
+  background: #EACF46;
+}
 
-    #tile6 {
-        background: #FFED94;
-    }
+#tile6 {
+  background: #FFED94;
+}
 
-    #tile7 {
-        background: white;
-    }
+#tile7 {
+  background: white;
+}
 
-    #tile8 {
-        background: #03133C;
-    }
+#tile8 {
+  background: #03133C;
+}
 
-    #tile9 {
-        background: #EACF46;
-    }
+#tile9 {
+  background: #EACF46;
+}
 
-    #tile10 {
-        background: #EACF46;
-    }
+#tile10 {
+  background: #EACF46;
+}
 
-    .tilecaption {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        margin: 0!important;
-        text-align: center;
-        color: white;
-        font-family: Segoe UI;
-        font-weight: lighter;
-    }
-    #colleague_table{
-      width: 50%;
-      margin-left: 350px;
-    }
+.tilecaption {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  margin: 0!important;
+  text-align: center;
+  color: white;
+  font-family: Segoe UI;
+  font-weight: lighter;
+}
+#colleague_table{
+  width: 50%;
+  margin-left: 350px;
+}
 .error {
     color: red;
     font-style: italic;
@@ -199,6 +199,12 @@
 }
 
 .status_radio{
-  margin-left: 550px;
-  padding: 10px;
+  font-family: Times New Roman;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 39%;
+  padding: 15px;
+}
+#agents {
+    padding: 20px;
 }

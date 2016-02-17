@@ -1,5 +1,5 @@
 class AgentsController < ApplicationController
-  before_filter :logged_in, :only => [:index]
+  before_filter :logged_in?, :only => [:index]
 
   def index
   end
@@ -40,7 +40,7 @@ class AgentsController < ApplicationController
   end
 
   def update_agent
-    @user = User.find(params[:id])
+    @user = User.where(:id => params[:id]).first
     if @user.update_attributes(agent_params)
       flash[:success] = "Profile Updated."
       redirect_to  my_profile_agent_path
@@ -56,14 +56,14 @@ class AgentsController < ApplicationController
 
   def create_agent
 
-    manager = User.where(:id => params[:id]).first.manager
+    manager = current_user.manager
     new_agent = User.new(agent_params)
     #new_agent[:status] = :I
     binding.pry
 
     if new_agent.valid?
       manager.agents << new_agent
-      ExampleMailer.sample_email(manager,new_agent).deliver
+      AppMailer.agent_added_notification_mail(manager,new_agent).deliver
       flash[:success] = "Agent added successfully , approval request sent to #{manager.name}"
       redirect_to add_agent_agent_path
     else
@@ -75,7 +75,7 @@ class AgentsController < ApplicationController
 
 
   private
-  def logged_in
+  def logged_in?
     if !user_signed_in?
       redirect_to new_user_session_path, :notice => "Please signin to access this page123."
     end
