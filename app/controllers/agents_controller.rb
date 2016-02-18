@@ -1,5 +1,5 @@
 class AgentsController < ApplicationController
-  before_filter :logged_in?, only: :index
+  before_filter :logged_in?
 
   def index
   end
