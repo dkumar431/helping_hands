@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'pages/about_us'
   get 'pages/contact_us'
 
-  get '*path' => redirect('/')
 
   resources :agents do
     member do
@@ -42,14 +41,15 @@ Rails.application.routes.draw do
   end
 
   resources :patients
-
+  root 'dashboards#index'
+  get '*path' => redirect('/')
 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'dashboards#index'
+
  # root 'passthrough#index'
 
   # Example of regular route:
