@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :dashboards, only: :index
 
+  get 'pages/about_us'
+  get 'pages/contact_us'
+
   resources :agents do
     member do
       get 'my_patients'
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
 
   resources :patients
 
-  # get 'pages/home'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
