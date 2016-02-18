@@ -13,4 +13,8 @@ module ApplicationHelper
 
   end
 
+  def header_link
+    user_signed_in? ? root_path : new_user_session_path
+  end
+
 end
