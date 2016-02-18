@@ -1,5 +1,5 @@
 class AgentsController < ApplicationController
-  before_filter :logged_in?, :only => [:index]
+  before_filter :logged_in?, only: :index
 
   def index
   end
@@ -26,21 +26,24 @@ class AgentsController < ApplicationController
   end
 
   def all_agents
-     @agents = User.where(:role_id => 2)
+     @agents = User.where(role_id: 2)
   end
 
   def patients_by_agent
-    agent = User.where(:id => params[:id]).first
+
+    agent = User.where(id: params[:id]).first
     @patients = agent.patients
+
   end
 
   def my_profile
-    @user = User.where(:id => params[:id]).first
-
+    @user = User.where(id: params[:id]).first
   end
 
   def update_agent
-    @user = User.where(:id => params[:id]).first
+
+    @user = User.where(id: params[:id]).first
+
     if @user.update_attributes(agent_params)
       flash[:success] = "Profile Updated."
       redirect_to  my_profile_agent_path
@@ -48,6 +51,7 @@ class AgentsController < ApplicationController
       @title = "Edit User"
       render 'my_profile'
     end
+
   end
 
   def add_agent
@@ -58,8 +62,6 @@ class AgentsController < ApplicationController
 
     manager = current_user.manager
     new_agent = User.new(agent_params)
-    #new_agent[:status] = :I
-    binding.pry
 
     if new_agent.valid?
       manager.agents << new_agent
@@ -70,19 +72,18 @@ class AgentsController < ApplicationController
       @user = new_agent
       render 'add_agent'
     end
-
   end
 
-
   private
+
   def logged_in?
-    if !user_signed_in?
+    unless user_signed_in?
       redirect_to new_user_session_path, :notice => "Please signin to access this page123."
     end
   end
 
   def agent_params
-    p = params.require(:user).permit(:name, :email, :password, :password_confirmation,:phone,:address)
+    p = params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address)
     p[:status] = :I
     p
   end
