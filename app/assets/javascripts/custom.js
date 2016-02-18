@@ -37,8 +37,9 @@ $(function() {
 
  }
 $(document).ready(function () {
+
     function_1();
-     $('.tree').treegrid();
+    $('.tree').treegrid();
     $("#new_patient").validate({
         rules: {
         "patient[name]": {required: true, minlength: 6},
@@ -65,5 +66,16 @@ $(document).ready(function () {
          type: 'POST'
       });
     });
+
+    $("#login-submit").on("click",function(){
+      var username = $("#username").val();
+      var password = $("#password").val();
+      if (username.length == 0 || password.length == 0){
+        $("#errordiv").show().html("<b>Username/Password cann't be blank.</b>")
+        return false;
+      }
+
+    });
+
 });
 

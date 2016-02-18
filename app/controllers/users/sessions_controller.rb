@@ -31,9 +31,9 @@ class Users::SessionsController < Devise::SessionsController
 
     user = User.find_by_email(params[:user][:email])
     if user.nil?
-      @error_message = 'User not found' and return nil
+      @error_message = "Email doesn't exist, Please signup" and return nil
     elsif !user.valid_password?(params[:user][:password])
-      @error_message = 'Invalid Password entered.' and return nil
+      @error_message = 'Invalid Password.' and return nil
     else
       user
     end

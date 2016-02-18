@@ -2,5 +2,5 @@
   location.href = "<%= dashboards_path %>"
 <% else %>
   $("#errordiv").show();
-  $("#errordiv").html("<%= @error_message %>");
+  $("#errordiv").html("<b><%= @error_message %></b>");
 <% end %>
