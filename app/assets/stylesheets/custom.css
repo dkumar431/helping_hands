@@ -114,6 +114,7 @@
 .icontext {
   color: white;
   font-size: 27px;
+  font-family: icon;
 }
 
 .bigicondark {
@@ -161,7 +162,7 @@
 }
 
 #tile8 {
-  background: #03133C;
+  background: #ae97ff;
 }
 
 #tile9 {
@@ -244,4 +245,12 @@ tr [colspan="3"] {
 .errors {
     color: red;
     font-weight: bold;
+}
+
+.tile {
+    border-radius: 15px 50px;
+}
+
+.custom_link{
+  color: white;
 }
