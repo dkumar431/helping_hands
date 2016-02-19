@@ -6,7 +6,8 @@ class AgentsController < ApplicationController
 
   def my_patients
     agent = User.where(id: params[:id]).first
-    @patients = agent.get_patients
+    #binding.pry
+    @patients = agent.get_patients.paginate(page: params[:page], per_page: 2)
     @patient = Patient.new
   end
 

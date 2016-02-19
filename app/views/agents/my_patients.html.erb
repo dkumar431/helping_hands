@@ -1,14 +1,18 @@
  <h1>My Patient</h1>
 
+<div class="base_mypatients">
+
 <% if @patients.count > 0 %>
+<div class="my_patients">
+<%= will_paginate @patients %>
  <table id="post_table" class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>PatientName</th>
-        <th>Address</th>
+
         <th>Phone</th>
         <th>Admit Date</th>
-        <th colspan="3">Actions</th>
+        <th colspan="3" >Actions</th>
       </tr>
     </thead>
 
@@ -16,21 +20,26 @@
       <% @patients.each do |patient| %>
         <tr>
           <td><%= patient.name %></td>
-          <td><%= patient.address %></td>
+
           <td><%= patient.phone %></td>
-          <td><%= patient.created_at.strftime('%c') %></td>
+          <td><%= patient.created_at.strftime("%d %B, %Y")   %></td>
           <!-- <td><%#= link_to 'Show', post %></td>-->
-          <td><%= link_to image_tag("/assets/edit.gif",size: "16"), edit_patient_path(patient), :class => "btn", :remote => true%></td>
-          <td><%= link_to image_tag("/assets/delete.jpg",size: "16"), patient, method: :delete,class: 'delete_patient', :remote => true  %></td>
+          <td><%= link_to image_tag("/assets/edit.png",size: "25"), edit_patient_path(patient), :class => "btn", :remote => true%></td>
+          <td><%= link_to image_tag("/assets/reject.png",size: "25"), patient, method: :delete,class: 'delete_patient', :remote => true, data: {confirm: "Are you sure to delete the patient?"}   %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @patients %>
+ </div>
 <% else %>
   <div><h3>No Patients associated with you. </h3></div>
 <% end %>
-<%= link_to "Add Patient", new_patient_path, :class => "btn_patient", :remote => true%>
-
+<br/>
+<div class="add_patient_div">
+  <%= link_to "Add Patient", new_patient_path, :class => "btn_patient", :remote => true%>
+</div>
+</div>
 <div id="patient_form">
   <%= render 'patients/new' %>
 </div>
