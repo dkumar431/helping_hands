@@ -240,3 +240,8 @@ tr [colspan="3"] {
 .pagination{
   padding-left: 75%;
 }
+
+.errors {
+    color: red;
+    font-weight: bold;
+}

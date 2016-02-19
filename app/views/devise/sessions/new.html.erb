@@ -65,12 +65,13 @@
               <div class="form-group">
                 <%= f.label :name %><br />
                 <%= f.text_field :name, autofocus: true, :id=>"name", :tabindex=>"1", :class=>"form-control", :placeholder=>"Name" %>
+                <span class="name errors" ></span>
               </div>
 
               <div class="form-group">
                 <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, :id=>"username", :tabindex=>"2", :class=>"form-control", :placeholder=>"Username" %>
-                <span id="email"></span>
+                <%= f.email_field :email, autofocus: true, :id=>"email", :tabindex=>"2", :class=>"form-control", :placeholder=>"Username" %>
+                <span class="email errors" ></span>
               </div>
 
               <div class="form-group">
@@ -80,21 +81,24 @@
                 <% end %><br />
 
                 <%= f.password_field :password, autocomplete: "off",:id=>"password", :tabindex=>"3", :class=>"form-control", :placeholder=>"Password" %>
-                <span id="password"></span>
+                <span class="password errors" ></span>
               </div>
 
               <div class="form-group">
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "off",:id=>"confirm-password", :tabindex=>"4", :class=>"form-control", :placeholder=>"Confirm Password" %>
+                <span class="password_confirmation errors" ></span>
               </div>
 
               <div class="form-group">
                 <%= f.label :address %><br />
                 <%= f.text_area :address, autofocus: true, :id=>"address", :tabindex=>"5", :class=>"form-control", :placeholder=>"" %>
+
               </div>
               <div class="form-group">
                 <%= f.label :phone %><br />
                 <%= f.text_field :phone, autofocus: true, :id=>"phone", :tabindex=>"6", :class=>"form-control", :placeholder=>"Phone" %>
+                <span class="phone errors" ></span>
               </div>
 
 

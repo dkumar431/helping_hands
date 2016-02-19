@@ -1,10 +1,12 @@
 <% if user_signed_in? %>
-  location.href = "<%= members_path %>"
+alert("in registration/create.js.erb")
+  location.href = "<%= dashboards_path %>"
 <% else %>
 
   <% resource.errors.messages.each do |key,value| %>
-
-    $("span#<%= key.to_s%>").html("<%= value.first %>");
+  console.log("<%= key.to_s%>");
+    $("#<%= key.to_s%>").css("border-color","red");
+    $("span.<%= key.to_s%>").html("<%= value.first %>");
   <% end %>
 
 <% end %>

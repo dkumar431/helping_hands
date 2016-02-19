@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   attr_accessor :sign_in
 
     validates   :name,
-                :presence => {:message => "name custom validation message for presence"} ,
-                :length => { :minimum => 10,:message => "name custom validation message for length"}
+                :presence => {:message => "Name cann't be blank."} ,
+                :length => { :minimum => 10,:message => "Name must be at least 10 character long."}
 
 
     validates   :email,
@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
     validates   :phone,
                 :presence => true
 
-  # validates_presence_of :name, :email, :password
 
 
   def is?(role_type)
