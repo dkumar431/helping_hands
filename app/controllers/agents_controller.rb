@@ -29,10 +29,11 @@ class AgentsController < ApplicationController
       @colleague_names[colg.id] = colg.name
     end
 
-    User.joins(:patients).select('users.name,patients.name,patients.address,patients.phone')
-    User.joins(:relationships).where("user.id = ?", 2)
+    #User.joins(:patients).select('users.name,patients.name,patients.address,patients.phone')
+    #User.joins(:relationships).where("user.id = ?", 2)
 
-    User.joins(:relationships).where("relationships.manager_id= ?",cu.manager.id)
+    #User.joins(:relationships).where("relationships.manager_id= ?",cu.manager.id)
+    #abc
 
 
   end
