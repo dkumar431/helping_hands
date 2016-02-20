@@ -97,6 +97,30 @@ $(document).ready(function () {
       });
     });
 
+    $("#search").keyup(function(){
+
+      var search_term = $("#search").val();
+
+        console.log("key up is called.");
+        $.ajax({
+         url: 'http://localhost:3000/agents/search_patient',
+         data: {
+            search : search_term
+         },
+         error: function() {
+            alert("Ajax call failed.");
+         },
+
+         success: function(data) {
+
+
+         },
+         type: 'POST'
+      });
+
+
+    });
+
     $("#login-submit").on("click",function(){
       var username = $("#username").val();
       var password = $("#password").val();

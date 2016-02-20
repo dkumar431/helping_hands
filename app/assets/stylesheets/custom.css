@@ -268,3 +268,9 @@ tr [colspan="3"] {
   background-position: 100% 40%;
   background-repeat: no-repeat;
 }
+
+.patient_search {
+    font-family: icon;
+    font-size: 20px;
+    margin-left: 20%;
+}

@@ -12,4 +12,6 @@ class Patient < ActiveRecord::Base
     .select('patients.*,diseases.description')
     .where('patients.id = ?',patient_id).first
   end
+
+
 end

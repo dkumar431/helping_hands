@@ -6,14 +6,14 @@ class AgentsController < ApplicationController
 
   def my_patients
     agent = User.where(id: params[:id]).first
-    @patients = agent.get_patients.paginate(page: params[:page], per_page: 5)
+    @patients = agent.get_patients.paginate(page: params[:page], per_page: 10)
     @patient = Patient.new
   end
 
   def my_patients_sort
     agent = User.where(id: current_user.id).first
     sort_order = "#{params[:sort_by]} #{params[:sort_type]}"
-    @patients = agent.patients.order(sort_order).paginate(page: params[:page], per_page: 5)
+    @patients = agent.patients.order(sort_order).paginate(page: params[:page], per_page: 10)
   end
 
   def my_colleagues
@@ -85,6 +85,11 @@ class AgentsController < ApplicationController
       @user = new_agent
       render 'add_agent'
     end
+  end
+
+  def search_patient
+    @patients = Patient.where("name LIKE ?" , "%#{params['search']}%").paginate(page: params[:page], per_page: 5)
+    #binding.pry
   end
 
   private

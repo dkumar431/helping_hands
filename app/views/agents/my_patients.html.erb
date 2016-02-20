@@ -3,6 +3,10 @@
 <div class="base_mypatients">
 
 <% if @patients.count > 0 %>
+  <div class="patient_search">
+    <b>Search Patient</b>
+    <%= text_field_tag "search", nil %>
+  </div>
   <div class="my_patients">
     <%= render  'agents/patients' %>
   </div>

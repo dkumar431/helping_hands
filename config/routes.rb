@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
     collection do
       post 'my_patients_sort'
+      post 'search_patient'
     end
   end
 
