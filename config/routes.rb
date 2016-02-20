@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :agents do
     member do
       get 'my_patients'
+
       get 'my_colleagues'
       get 'all_agents'
       get 'patients_by_agent'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
 
     end
     collection do
+      post 'my_patients_sort'
     end
   end
 

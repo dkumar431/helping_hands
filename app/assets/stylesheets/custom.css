@@ -254,3 +254,17 @@ tr [colspan="3"] {
 .custom_link{
   color: white;
 }
+.sortable{
+    background-image: url("/assets/sort.png");
+    background-position: 98% 40%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+
+}
+.refresh{
+  background-image: url("/assets/ajax-loader.gif");
+  background-size: 20px 20px;
+  background-size: 20px 20px;
+  background-position: 100% 40%;
+  background-repeat: no-repeat;
+}

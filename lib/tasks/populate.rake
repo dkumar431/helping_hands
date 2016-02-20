@@ -5,7 +5,7 @@ namespace :populate do
   desc "Generate test patients"
   task patient_diseases: :environment do
     user_ids = User.all.pluck(:id)
-    Patient.destroy_all
+    #Patient.destroy_all
 
     10.times do |n|
       name = Faker::Name.name

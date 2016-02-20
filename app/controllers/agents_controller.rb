@@ -6,9 +6,14 @@ class AgentsController < ApplicationController
 
   def my_patients
     agent = User.where(id: params[:id]).first
-    #binding.pry
-    @patients = agent.get_patients.paginate(page: params[:page], per_page: 2)
+    @patients = agent.get_patients.paginate(page: params[:page], per_page: 5)
     @patient = Patient.new
+  end
+
+  def my_patients_sort
+    agent = User.where(id: current_user.id).first
+    sort_order = "#{params[:sort_by]} #{params[:sort_type]}"
+    @patients = agent.patients.order(sort_order).paginate(page: params[:page], per_page: 5)
   end
 
   def my_colleagues

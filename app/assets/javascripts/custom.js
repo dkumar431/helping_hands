@@ -67,6 +67,36 @@ $(document).ready(function () {
       });
     });
 
+    $(document).on('click','.sort',function(event){
+      var sort_id = $(this).attr('id');
+      var sort_by = $(this).attr('sort_by');
+      var sort_type = $(this).attr('sort_type');
+
+      $('#'+sort_id).parent().parent().addClass("refresh");
+      $.ajax({
+         url: 'http://localhost:3000/agents/my_patients_sort',
+         data: {
+            sort_by : sort_by,
+            sort_type : sort_type
+         },
+         error: function() {
+            alert("Ajax call failed.");
+         },
+
+         success: function(data) {
+            if (sort_type == 'asc'){
+              $('#'+sort_id).attr('sort_type',"desc");
+            }
+            else{
+              $('#'+sort_id).attr("sort_type","asc");
+            }
+            $('#'+sort_id).parent().parent().removeClass("refresh");
+
+         },
+         type: 'POST'
+      });
+    });
+
     $("#login-submit").on("click",function(){
       var username = $("#username").val();
       var password = $("#password").val();
