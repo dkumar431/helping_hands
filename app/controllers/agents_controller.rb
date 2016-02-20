@@ -17,8 +17,7 @@ class AgentsController < ApplicationController
   end
 
   def my_colleagues
-    agent = User.where(id: params[:id]).first
-    @colleagues = agent.manager.agents;
+    @colleagues = current_user.manager.agents;
 
     @patients_by_agent = {}
     @colleagues.each do |colg|
@@ -29,6 +28,13 @@ class AgentsController < ApplicationController
     @colleagues.each do |colg|
       @colleague_names[colg.id] = colg.name
     end
+
+    User.joins(:patients).select('users.name,patients.name,patients.address,patients.phone')
+    User.joins(:relationships).where("user.id = ?", 2)
+
+    User.joins(:relationships).where("relationships.manager_id= ?",cu.manager.id)
+
+
   end
 
   def all_agents
