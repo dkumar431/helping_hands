@@ -54,17 +54,19 @@ class AgentsController < ApplicationController
   end
 
   def update_agent
-
     @user = User.where(id: params[:id]).first
+    if @user.update_attributes(update_agent_params)
 
-    if @user.update_attributes(agent_params)
+      #http://stackoverflow.com/questions/4264750/devise-logging-out-automatically-after-password-change
+      sign_out current_user
+      sign_in :user, @user, bypass: true
+
       flash[:success] = "Profile Updated."
-      redirect_to  my_profile_agent_path
+      redirect_to  my_profile_agent_path(current_user)
     else
       @title = "Edit User"
       render 'my_profile'
     end
-
   end
 
   def add_agent
@@ -89,7 +91,7 @@ class AgentsController < ApplicationController
 
   def search_patient
     @patients = Patient.where("name LIKE ?" , "%#{params['search']}%").paginate(page: params[:page], per_page: 10)
-    #binding.pry
+
   end
 
   private
@@ -102,8 +104,11 @@ class AgentsController < ApplicationController
 
   def agent_params
     p = params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, :address)
-    p[:status] = :I
+    #p[:status] = :I
     p
+  end
+  def update_agent_params
+    params.require(:user).permit(:name, :password, :password_confirmation, :phone, :address)
   end
 
 end

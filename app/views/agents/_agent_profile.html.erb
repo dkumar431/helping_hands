@@ -1,62 +1,29 @@
 <% if @user.persisted? %>
   <%= javascript_tag do %>
     $(document).ready(function(){
+
       $("#register-form input, #register-form textarea").not("#register-submit").each(function(){
         $(this).prop("disabled",true);
       });
 
       $("#register-submit").click(function(event){
-        var is_updatable = $("#update").val();
-        if (is_updatable == 1){
-          $.ajax({
-             url: 'http://localhost:3000/agents/update_agent',
-             data: $("#register-form").serialize(),
-             error: function() {
-                alert("Ajax call failed.");
-             },
-
-             success: function(data) {
-                alert("Ajax call success.");
-
-             },
-             type: 'POST'
-          });
-        }else{
+        var r_type = $("#register-submit").val();
+        if (r_type == 'Edit'){
           $("#register-form input, #register-form textarea").not("#username").each(function(){
             $(this).prop("disabled",false);
           });
-
-          var $hiddenInput = $('<input/>',{type:'hidden',id:'update',value:1});
-          $hiddenInput.appendTo($("#register-form"));
-          $("#register-submit").html('Update');
+          $("#register-submit").prop('value', 'Save');
+          event.preventDefault();
         }
-
-
-
-
       });
-
     });
   <% end %>
 <% end %>
-<% path = @user.persisted? ? update_agent_agents_path : create_agent_agent_path %>
+
+<% path = @user.persisted? ? update_agent_agent_path : create_agent_agent_path %>
 <%= form_for(@user, :url => path,:html => { :id=>"register-form", :role=>"form"}) do |f| %>
 
   <%#= render 'shared/error_messages', :object => f.object %>
-
-  <div class="form-group">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <% if @user.persisted? %>
-            <%= button_tag "Edit", :type => 'button', :id=>"register-submit", :class=>"form-control btn btn-register" %>
-            <%#= f.submit "Edit",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register" %>
-          <% else %>
-            <%= f.submit "Register",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register", remote: true %>
-          <% end %>
-
-        </div>
-      </div>
-  </div>
 
   <div class="form-group">
     <%= f.label :name %><br />
@@ -97,5 +64,16 @@
   </div>
 
 
+  <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <% if @user.persisted? %>
+            <%= f.submit "Edit",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register", remote: true %>
+          <% else %>
+            <%= f.submit "Register",:id=>"register-submit", :tabindex=>"7", :class=>"form-control btn btn-register", remote: true %>
+          <% end %>
 
+        </div>
+      </div>
+  </div>
 <% end %>

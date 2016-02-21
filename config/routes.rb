@@ -21,13 +21,12 @@ Rails.application.routes.draw do
       get 'patients_by_agent'
       get 'my_profile'
       get 'add_agent'
-
+      patch 'update_agent'
       get 'add_agent'
       post 'create_agent'
 
     end
     collection do
-      post 'update_agent'
       post 'my_patients_sort'
       post 'search_patient'
     end
