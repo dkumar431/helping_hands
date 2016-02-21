@@ -88,7 +88,7 @@ class AgentsController < ApplicationController
   end
 
   def search_patient
-    @patients = Patient.where("name LIKE ?" , "%#{params['search']}%").paginate(page: params[:page], per_page: 5)
+    @patients = Patient.where("name LIKE ?" , "%#{params['search']}%").paginate(page: params[:page], per_page: 10)
     #binding.pry
   end
 

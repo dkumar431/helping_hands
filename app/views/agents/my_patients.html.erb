@@ -1,22 +1,30 @@
- <h1>My Patient</h1>
+
 
 <div class="base_mypatients">
 
 <% if @patients.count > 0 %>
   <div class="patient_search">
-    <b>Search Patient</b>
-    <%= text_field_tag "search", nil %>
+    <div style="float: left;">
+      <b>Search Patient</b>
+      <%= text_field_tag "search", nil %>
+      <span class="search_loader"><%= image_tag "search_loader.gif" %></span>
+    </div>
+    <div style="float: right;">
+      <%= link_to "Add Patient", new_patient_path, :class => "btn_patient", :remote => true%>
+    </div>
+    <div style="clear: both;"></div>
+
+
   </div>
   <div class="my_patients">
-    <%= render  'agents/patients' %>
+    <%= ajax_section :id => "page", :render => "agents/patients" %>
+    <%#= render  'agents/patients' %>
   </div>
 <% else %>
   <div><h3>No Patients associated with you. </h3></div>
 <% end %>
 <br/>
-<div class="add_patient_div">
-  <%= link_to "Add Patient", new_patient_path, :class => "btn_patient", :remote => true%>
-</div>
+
 </div>
 <div id="patient_form">
   <%= render 'patients/new' %>

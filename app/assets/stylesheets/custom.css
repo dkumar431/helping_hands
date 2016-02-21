@@ -272,5 +272,8 @@ tr [colspan="3"] {
 .patient_search {
     font-family: icon;
     font-size: 20px;
-    margin-left: 20%;
+
+}
+.search_loader{
+  display: none;
 }

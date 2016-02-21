@@ -97,11 +97,12 @@ $(document).ready(function () {
       });
     });
 
-    $("#search").keyup(function(){
+    $(document).on("keyup","#search",function(event){
 
       var search_term = $("#search").val();
 
         console.log("key up is called.");
+        $(".search_loader").show();
         $.ajax({
          url: 'http://localhost:3000/agents/search_patient',
          data: {
@@ -112,7 +113,7 @@ $(document).ready(function () {
          },
 
          success: function(data) {
-
+            $(".search_loader").hide();
 
          },
          type: 'POST'
@@ -130,6 +131,9 @@ $(document).ready(function () {
       }
 
     });
+
+
+
 
 });
 
