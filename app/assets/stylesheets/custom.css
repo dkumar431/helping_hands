@@ -277,3 +277,12 @@ tr [colspan="3"] {
 .search_loader{
   display: none;
 }
+
+.static{
+  font-family: fantasy;
+  font-size: 15px;
+  margin: 0 0 10px 200px;
+  padding: 30px;
+  text-align: justify;
+  width: 900px;
+}

@@ -2,6 +2,12 @@ require 'faker'
 
 namespace :populate do
 
+  desc "Generat static contents"
+  task contents: :environment do
+    Content.create(title: "Contact Us", content: Faker::Lorem.sentence(6), modified_by: 1)
+    Content.create(title: "About Us", content: Faker::Lorem.sentence(6), modified_by: 1)
+  end
+
   desc "Generate test patients"
   task patient_diseases: :environment do
     user_ids = User.all.pluck(:id)
